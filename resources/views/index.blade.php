@@ -1,29 +1,40 @@
 @extends("layouts.master")
 
-@section("title", "Elenco dei film migliori")
+@section("title", "www.trenitalya.it")
 
 @section("content")
-<h1>Lista dei film</h1>
+<h1>Lista dei treni</h1>
 
-<div class="container">
-    <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
-         @foreach ($trains as $train)
-        <div class="col">
-            <div class="card my-2">
-                <h5 class="card-header">
-                    {{ $train['company'] }}
-                </h5>
-                <div class="card-body">
-                    <p class="card-text"><i>partenza: {{ $train['start_station'] }}</i></p>
-                    <p class="card-text">arrivo: {{ $train['arrival_station'] }}</p>
-                    <p class="card-text">orario di partenza: {{ $train['start_time'] }}</p>
-                    <p class="card-text">orario di arrivo: {{ $train['arrival_time'] }}</p>
-                </div>
-            </div>
-        </div>
+<table class="table table-dark table-hover">
+    <thead>
+        <tr>
+            <th scope="col">company</th>
+            <th scope="col">departure station</th>
+            <th scope="col">arrival station</th>
+            <th scope="col">depart at</th>
+            <th scope="col">arrive at</th>
+            <th scope="col">train code</th>
+            <th scope="col">carriage</th>
+            <th scope="col">is delay</th>
+            <th scope="col">is canceled</th>
+        </tr>
+    </thead>
+    <tbody class="table-group-divider">
+        @foreach ($trains as $train)
+        <tr>
+            <th scope="row">{{ $train['company'] }}</th>
+            <td>{{ $train['start_station'] }}</td>
+            <td>{{ $train['arrival_station'] }}</td>
+            <td>{{ $train['start_time'] }}</td>
+            <td>{{ $train['arrival_time'] }}</td>
+            <td>{{ $train['train_code'] }}</td>
+            <td>{{ $train['carriages_amount'] }}</td>
+            <td>{{ $train['is_on_time'] }}</td>
+            <td>{{ $train['is_canceled'] }}</td>
+        </tr>
         @endforeach
-    </div>
-</div>
+    </tbody>
+</table>
 
 
 
